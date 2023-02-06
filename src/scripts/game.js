@@ -10,7 +10,7 @@ export default class Game {
         backgroundColor: 'black',
         particlesNum: 1000,
         step: 10,
-        base: 300,
+        base: 400,
         xBias: 1, 
         // 0..2
         yBias: 1, 
@@ -64,11 +64,11 @@ export default class Game {
     }
 
     getNoise(x, y, z, w) {
-        let octaves = 4, fallout = 0.5, amp = 1, f = 1, sum = 0;
+        let octaves = 4, fallout = 0.25, amp = 1, f = 1, sum = 0;
 
         for (let i = 0; i < octaves; ++i) {
             amp *= fallout;
-            sum += amp * (this.noise4D(x * f, y * f, z * f, w * f) + 1) * 0.5;
+            sum += amp * (this.noise4D(x * f, y * f, z * f, w * f) + 1);
             f *= 2;
         }
 
