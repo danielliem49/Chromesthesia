@@ -1,5 +1,5 @@
 
-import Particle from "./particle.js"
+import Particle from "/src/scripts/particle.js"
 import { createNoise4D } from 'simplex-noise';
 
 
@@ -17,8 +17,8 @@ export default class Game {
         wIncrement: 0.001,
 
         hueIncrement: 0.2,
-        hueVolatility: 2,
-        alphaIncrement: 0.001
+        hueVariation: 2,
+        alphaIncrement: 0.002
     };
 
     constructor(canvas) {
@@ -36,7 +36,7 @@ export default class Game {
         this.hueStart = Math.random()* 360;
 
         // UI adjustable variables
-        this.hueVolatility = Game.DEFAULTS.hueIncrement;
+        this.hueVariation = Game.DEFAULTS.hueVariation;
         this.step = Game.DEFAULTS.step;
         this.base = Game.DEFAULTS.base;
         this.xBias = Game.DEFAULTS.xBias;
@@ -51,7 +51,7 @@ export default class Game {
         particle.y = this.DIM_Y * Math.random();
         // color hue in degrees
         particle.color = {
-            h: (this.hueStart + (this.hueVolatility * Math.atan2(this.DIM_Y - particle.y, this.DIM_X - particle.x) * 180 / Math.PI)), s: 1, l: 0.5, a: 0}
+            h: (this.hueStart + (this.hueVariation * Math.atan2(this.DIM_Y - particle.y, this.DIM_X - particle.x) * 180 / Math.PI)), s: 1, l: 0.5, a: 0}
         }
 
     addParticles() {
@@ -109,7 +109,6 @@ export default class Game {
             // makes more opaque over time
             if (p.color.a < 1) p.color.a += Game.DEFAULTS.alphaIncrement;
             
-            
             // actual drawing
             this.ctx.beginPath();
 
@@ -147,17 +146,18 @@ export default class Game {
     }
 
     start() {
-        // if (this.running){
+        if (this.running){
             this.addParticles();
-            requestAnimationFrame(this.update.bind(this));
+            this.raf = requestAnimationFrame(this.update.bind(this));
             console.log("Game is Running!");       
 
-        // }else{
-        //     cancelAnimationFrame(this.raf);
-        //     this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-        //     this.ctx.fillStyle = Game.DEFAULTS.backgroundColor;
-        //     this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
-        // }
+        }else{
+            cancelAnimationFrame(this.raf);
+            console.log("test");
+            this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+            this.ctx.fillStyle = Game.DEFAULTS.backgroundColor;
+            this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+        }
         console.log(this.running)
     }
 

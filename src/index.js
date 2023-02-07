@@ -34,13 +34,12 @@ toggleBtn.addEventListener("click", (event) => {
 
 // initialize game and click listener
 const game = new Game(canvas);
-game.start();
-// canvas.addEventListener("click", (event) => {
-//     event.preventDefault();
-//     event.stopPropagation();
-//     game.running = !game.running;
-//     game.start();
-// })
+canvas.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    game.running = !game.running;
+    game.start();
+})
 
 
 // sliders
@@ -50,14 +49,14 @@ let slider3 = document.getElementById("particleBase");
 let slider4 = document.getElementById("xBias");
 let slider5 = document.getElementById("yBias");
 
-game.hueVolatility = slider1.value;
+game.hueVariation = slider1.value;
 game.step = slider2.value;
 game.base = slider3.value;
 game.xBias = slider4.value;
 game.yBias = slider5.value;
 
 slider1.addEventListener("input", function () {
-    game.hueVolatility = this.value;
+    game.hueVariation = this.value;
 });
 slider2.addEventListener("input", function () {
     game.step = this.value;
