@@ -1,4 +1,6 @@
-import Game from "./scripts/game"
+import Input from "/src/scripts/input.js"
+
+import Game from "/src/scripts/game"
 
 // Setup Canvas
 const canvasWidth = window.innerWidth;

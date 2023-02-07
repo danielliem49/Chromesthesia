@@ -1,4 +1,5 @@
 
+import Input from "/src/scripts/input.js"
 import Particle from "/src/scripts/particle.js"
 import { createNoise4D } from 'simplex-noise';
 
