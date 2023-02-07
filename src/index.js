@@ -1,4 +1,3 @@
-import Input from "/src/scripts/input.js"
 
 import Game from "/src/scripts/game"
 
@@ -32,19 +31,20 @@ toggleBtn.addEventListener("click", (event) => {
 //     }
 // })
 
-
-
-// initialize game and click listener
-const game = new Game(canvas);
+// initialize game and click listeners
+let game = new Game(canvas);
 canvas.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
     game.running = !game.running;
-    game.start();
+    if (game.running) {
+        game.start();
+    }else{
+        game.stop();
+    }
 })
 
-
-// sliders
+//sliders and control
 let slider1 = document.getElementById("colorVariation");
 let slider2 = document.getElementById("particleStep");
 let slider3 = document.getElementById("particleBase");
