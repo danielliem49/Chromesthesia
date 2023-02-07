@@ -28,11 +28,13 @@ export default class Game {
         this.ctx = canvas.getContext("2d")
         this.particles = [];
         this.noise4D = createNoise4D(Math.random);
-        this.rand = Math.random();
         
         // algorithm variable start values
         this.zStart = 0;
         this.wStart = 0;
+
+        // rands, reset at each game.start()
+        this.rand = Math.random();
         this.hueStart = Math.random()* 360;
 
         // UI adjustable variables
@@ -55,7 +57,6 @@ export default class Game {
         }
 
     addParticles() {
-
         if (this.particles.length) {
             this.particles = [];
         }
@@ -65,6 +66,11 @@ export default class Game {
             this.resetParticle(particle);
             this.particles.push(particle);
         }
+    }
+
+    resetRands() {
+        this.rand = Math.random();
+        this.hueStart = Math.random() * 360;
     }
 
     getNoise(x, y, z, w) {
@@ -111,7 +117,6 @@ export default class Game {
             
             // actual drawing
             this.ctx.beginPath();
-
             this.ctx.strokeStyle = p.hsla();
             this.ctx.moveTo(p.lastX, p.lastY);
             this.ctx.lineTo(p.x, p.y);
@@ -142,23 +147,24 @@ export default class Game {
         this.zStart += Game.DEFAULTS.zIncrement;
         this.wStart += Game.DEFAULTS.wIncrement;
 
-        requestAnimationFrame(this.update.bind(this));
+        this.raf = requestAnimationFrame(this.update.bind(this));
+
     }
 
-    start() {
-        if (this.running){
-            this.addParticles();
-            this.raf = requestAnimationFrame(this.update.bind(this));
-            console.log("Game is Running!");       
 
-        }else{
-            cancelAnimationFrame(this.raf);
-            console.log("test");
-            this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-            this.ctx.fillStyle = Game.DEFAULTS.backgroundColor;
-            this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
-        }
-        console.log(this.running)
+
+    start() {
+        this.resetRands();
+        this.addParticles();
+        this.raf = requestAnimationFrame(this.update.bind(this));
+        console.log("Game is Running!");
+    }
+
+    stop() {
+        this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+        this.ctx.fillStyle = Game.DEFAULTS.backgroundColor;
+        this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+        cancelAnimationFrame(this.raf);
     }
 
 }
