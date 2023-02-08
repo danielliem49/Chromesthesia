@@ -28,7 +28,7 @@ body {
   flex-direction: column;
 }
 
-#controlMenu {
+#options {
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

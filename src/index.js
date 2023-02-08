@@ -15,11 +15,11 @@ ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
 // toggle menu with button
 const toggleBtn = document.getElementById("toggleBtn");
-const controlMenu = document.getElementById("controlMenu");
+const controlContent = document.getElementById("control-content");
 toggleBtn.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    controlMenu.style.display = controlMenu.style.display === "none" ? "flex" : "none";
+    controlContent.style.display = controlContent.style.display === "none" ? "flex" : "none";
 })
 
 // // toggle menu with space
@@ -27,7 +27,7 @@ toggleBtn.addEventListener("click", (event) => {
 //     if (event.code === "Space") {
 //     event.preventDefault();
 //     event.stopPropagation();
-//     controlMenu.style.display = controlMenu.style.display === "none" ? "flex" : "none";
+//     controlContent.style.display = controlContent.style.display === "none" ? "flex" : "none";
 //     }
 // })
 
