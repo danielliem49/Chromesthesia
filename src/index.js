@@ -4,7 +4,6 @@ import Game from "/src/scripts/game"
 // Setup Canvas
 const canvasWidth = window.innerWidth;
 const canvasHeight = window.innerHeight;
-
 const canvas = document.getElementById("game-canvas");
 canvas.setAttribute("width", canvasWidth);
 canvas.setAttribute("height", canvasHeight);
@@ -31,9 +30,8 @@ toggleBtn.addEventListener("click", (event) => {
 //     }
 // })
 
-// initialize game and click listeners
+// initialize game, click to start/stop
 let game = new Game(canvas);
-
 canvas.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -44,19 +42,26 @@ canvas.addEventListener("click", (event) => {
         game.stop();
     }
 })
+
 //sliders and control
+let checkbox1 = document.getElementById("autoErase");
 let slider1 = document.getElementById("colorVariation");
 let slider2 = document.getElementById("particleStep");
 let slider3 = document.getElementById("particleBase");
 let slider4 = document.getElementById("xBias");
 let slider5 = document.getElementById("yBias");
 
-game.hueVariation = slider1.value;
-game.step = slider2.value;
-game.base = slider3.value;
-game.xBias = slider4.value;
-game.yBias = slider5.value;
+// control defaults
+slider1.value = game.hueVariation;
+slider2.value = game.step;
+slider3.value = game.base;
+slider4.value = game.xBias;
+slider5.value = game.yBias;
 
+// control event listeners
+checkbox1.addEventListener("input", function (){
+    game.autoErase = !game.autoErase;
+});
 slider1.addEventListener("input", function () {
     game.hueVariation = this.value;
 });
