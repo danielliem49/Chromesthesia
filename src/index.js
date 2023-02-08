@@ -33,6 +33,7 @@ toggleBtn.addEventListener("click", (event) => {
 
 // initialize game and click listeners
 let game = new Game(canvas);
+
 canvas.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -43,7 +44,6 @@ canvas.addEventListener("click", (event) => {
         game.stop();
     }
 })
-
 //sliders and control
 let slider1 = document.getElementById("colorVariation");
 let slider2 = document.getElementById("particleStep");

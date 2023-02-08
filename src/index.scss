@@ -32,3 +32,11 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+#contacts {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: row;
+}

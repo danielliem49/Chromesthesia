@@ -96,7 +96,7 @@ export default class Game {
     // }
 
     update() {
-        let step = this.step, base = this.base, t = 5000;
+        let step = this.step, base = this.base;
         
         for (let i = 0; i < this.particles.length; i++) {
             let p = this.particles[i];
@@ -127,30 +127,33 @@ export default class Game {
                 this.resetParticle(p);
             }
 
-            // // erasing after t amount of time
-            // setTimeout(()=> {
-            // this.ctx.beginPath();
-            // this.ctx.strokeStyle = Game.DEFAULTS.backgroundColor;
-            // this.ctx.moveTo(p.lastX, p.lastY);
-            // this.ctx.lineTo(p.x, p.y);
-            // this.ctx.stroke();
-            // }, t)
-
+            
         }
-
+        
         if (this.rand > 0.5) {
             this.hueStart += Game.DEFAULTS.hueIncrement;
         }else{
             this.hueStart -= Game.DEFAULTS.hueIncrement;
         }
-
+        
         this.zStart += Game.DEFAULTS.zIncrement;
         this.wStart += Game.DEFAULTS.wIncrement;
-
+        
         this.raf = requestAnimationFrame(this.update.bind(this));
-
+        
     }
-
+    
+    erase(){
+        let t = 5000;
+        // // erasing after t amount of time
+        // setTimeout(()=> {
+        // this.ctx.beginPath();
+        // this.ctx.strokeStyle = Game.DEFAULTS.backgroundColor;
+        // this.ctx.moveTo(p.lastX, p.lastY);
+        // this.ctx.lineTo(p.x, p.y);
+        // this.ctx.stroke();
+        // }, t)
+    }
 
 
     start() {
