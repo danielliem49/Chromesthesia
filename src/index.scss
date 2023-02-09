@@ -19,28 +19,178 @@ body {
 #controls {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 2%;
     z-index: 1;
     display: flex;
     flex-direction: column;
 }
 
-#options {
+#control-content {
     background-color: rgba(0,0,0,0.9);
     color: white;
+    opacity: 0.8;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
+    display: none;
     flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 150%;
+    font-size: small
 }
 
 #contacts {
     background-color: rgba(0, 0, 0, 0.9);
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    // color: white;
+    // font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
 }
 
-#control-content {
+#start-screen {
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#title {
+    opacity: 1;
+    transition: opacity 2s;
+}
+
+#clicktostart {
+    position: absolute;
+    top: calc(50% + 150px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    // margin-top: 150px;
+    text-align: center;
+    color: white;
+    opacity: 0.5;
+    transition: opacity 10s;
+
+    animation: fadeInOut 4s;
+    -webkit-animation: fadeInOut 4s ease-in-out infinite;
+    -moz-animation: fadeInOut 4s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#title.hidden, #clicktostart.hidden, #name.hidden {
+    opacity: 0;
+}
+
+#clicktostart.no-animation {
+    animation: none;
+    -webkit-animation: none;
+    -moz-animation: none;
+}
+
+button {
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-color: white;
+    border-bottom-color:black ;
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-size: medium;
+    font-weight: bold;
+    color: white;
+    width: 6rem;
+    height: 2rem;
+    background-color: black;
+    opacity: 1;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: left;
+    padding-left: 7px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+
+#name {
+    position: absolute;
+    top: calc(50% + 50px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    opacity: 0.8;
+    transition: opacity 2s;
+}
+
+audio {
+    z-index: 1;
+};
+
+#muteButton {
+    position: absolute;
+    bottom: 3%;
+    right: 0%;
+    background: none;
+    border: none;
+    user-select: none;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+#unmuteButton {
+    position: absolute;
+    bottom: 3%;
+    right: 0%;
+    background: none;
+    border: none;
+    user-select: none;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.hidden {
     display: none;
 }

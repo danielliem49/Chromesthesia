@@ -1,9 +1,9 @@
 
-import Particle from "/src/scripts/particle.js"
+import Particle from "./particle.js"
 import { createNoise4D } from 'simplex-noise';
 
 
-export default class Game {
+class Game {
 
     static DEFAULTS = {
         backgroundColor: 'black',
@@ -12,12 +12,13 @@ export default class Game {
         wIncrement: 0.001,
         hueIncrement: 0.2,
         alphaIncrement: 0.002,
-        autoErase: false,
         
         // UI Adjustable
-        hueVariation: 3,
-        step: 10,
-        base: 400,
+        resetTimer: 300000,
+        light: 0.5,
+        hueVariation: 2,
+        step: 11,
+        base: 300,
         xBias: 1, 
         yBias: 1 
     };
@@ -38,8 +39,15 @@ export default class Game {
         this.rand = Math.random();
         this.hueStart = Math.random()* 360;
 
+        // for preset modes
+        this.hueIncrement = Game.DEFAULTS.hueIncrement;
+
         // UI adjustable variables
-        this.autoErase = Game.DEFAULTS.autoErase;
+        this.resetTimer = Game.DEFAULTS.resetTimer
+        this.monochrome = false;
+        this.whitesmoke = false;
+        this.shadowblack = false;
+        this.light = Game.DEFAULTS.light;
         this.hueVariation = Game.DEFAULTS.hueVariation;
         this.step = Game.DEFAULTS.step;
         this.base = Game.DEFAULTS.base;
@@ -48,6 +56,12 @@ export default class Game {
 
         // game state
         this.running = false;
+        this.awaitingRestart = false;
+
+        // music
+        this.music = document.createElement("audio");
+        this.music.src = "assets/relaxing-music-vol1.mp3";
+        this.music.volume = 0.1;
     }
     
     addParticles() {
@@ -67,7 +81,7 @@ export default class Game {
         particle.y = this.DIM_Y * Math.random();
         // color hue in degrees
         particle.color = {
-            h: (this.hueStart + (this.hueVariation * Math.atan2(this.DIM_Y - particle.y, this.DIM_X - particle.x) * 180 / Math.PI)), s: 1, l: 0.5, a: 0}
+            h: (this.hueStart + (this.hueVariation * Math.atan2(this.DIM_Y - particle.y, this.DIM_X - particle.x) * 180 / Math.PI)), s: 1, l: this.light, a: 0}
     }
 
     resetRands() {
@@ -90,6 +104,13 @@ export default class Game {
     update() {
         let step = this.step, base = this.base;
         
+        // randomly move clockwise/anticlockwise on colorwheel, and set preset modes
+        if (this.rand > 0.5) {
+            this.hueStart += this.hueIncrement;
+        } else {
+            this.hueStart -= this.hueIncrement;
+        }
+
         for (let i = 0; i < this.particles.length; i++) {
             let p = this.particles[i];
             
@@ -115,70 +136,80 @@ export default class Game {
             if (p.x < 0 || p.x > this.DIM_X || p.y < 0 || p.y > this.DIM_Y) {
                 this.resetParticle(p);
             }
-
-            
-        }
-        
-        // randomly move clockwise/anticlockwise on colorwheel
-        if (this.rand > 0.5) {
-            this.hueStart += Game.DEFAULTS.hueIncrement;
-        }else{
-            this.hueStart -= Game.DEFAULTS.hueIncrement;
         }
         
         // 4D "randomness"
         this.zStart += Game.DEFAULTS.zIncrement;
         this.wStart += Game.DEFAULTS.wIncrement;
-
-        this.erase();
         
         this.raf = requestAnimationFrame(this.update.bind(this));
-        
     }
-    
-    erase(){
-        if (this.autoErase) {
-        let t = 30;
-        // gradual fade for screen clear
-        let timesRun = 0;
-        let a = 0;
-        let interval = setInterval(() => {
-            this.ctx.fillStyle = `rgba(0, 0, 0, ${a})`;
-            this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
-            a += 0.1;
-            timesRun += 1;
-            if (timesRun === 10) clearInterval(interval);
-        }, t)
-        }
-    }
-
 
     start() {
         // make sure screen is cleared
         this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-        this.ctx.fillStyle = "black";
+        this.ctx.fillStyle = Game.DEFAULTS.backgroundColor;
         this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
 
         // initialization
         this.resetRands();
         this.addParticles();
         this.raf = requestAnimationFrame(this.update.bind(this));
+
+        // // reset if exists on init
+        // if (this.resetTimer) {
+        this.reset();
+        // }
+
         console.log("Game is Running!");
+
     }
 
     stop() {
         // gradual fade for screen clear
         let timesRun = 0;
         let a = 0;
-        let interval = setInterval(()=> {
-        this.ctx.fillStyle = `rgba(0, 0, 0, ${a})`;
-        this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
-        a += 0.1;
-        timesRun += 1;
-        if (timesRun === 10) clearInterval(interval);
+        let interval = setInterval(() => {
+            this.ctx.fillStyle = `rgba(0, 0, 0, ${a})`;
+            this.ctx.fillRect(0, 0, this.DIM_X, this.DIM_Y);
+            a += 0.05;
+            timesRun += 1;
+            if (timesRun === 20) clearInterval(interval);
         }, 30)
 
+        if (this.awaitingRestart) clearTimeout(this.timerID);
+        this.awaitingRestart = false;
+        
         cancelAnimationFrame(this.raf);
     }
 
+    reset() {
+        if (this.awaitingRestart) clearTimeout(this.timerID);
+        console.log(this.resetTimer);
+
+        // if (!this.resetTimer) {
+        //     console.log("resetTimer is NanN")
+        // }
+
+
+        if (this.resetTimer) {
+            const resetAndStart = async () => {
+                
+                this.timerID = null;
+                this.awaitingRestart = true
+                console.log(`awaiting reset in ${this.resetTimer} ms`);
+                const resetTimeout = () => new Promise((resolve) => {
+                    this.timerID = setTimeout(resolve, this.resetTimer);
+                });
+    
+                await resetTimeout();
+                this.stop();
+                setTimeout(() => this.start(), 1000);
+            };
+            resetAndStart();
+        }
+    }
+
 }
+
+export default Game;
