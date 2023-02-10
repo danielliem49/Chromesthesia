@@ -1,5 +1,6 @@
 
-#Chromesthesia
+##Chromesthesia
+by Daniel Liem
 
 ![](/assets/startpage.png)
 ![](/assets/startpage2.jpg)
@@ -11,6 +12,9 @@ Link to live: https://danielliem49.github.io/Chromesthesia/
 
 
 ## 1) Background:
+
+Now enjoy life in color!
+
 Chromesthesia is a graphics generator based on a Javascript implementation of 4D simplexnoise. An algorithm randomly generates particles on screen and blesses them with movement and color, allowing for a variety of cool patterns and textures.
 
 Feel free to kick back with a beer, relax, and get hypnotized. When it comes to using this app, there are no rules!
