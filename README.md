@@ -25,6 +25,7 @@ Feel free to kick back with a beer, relax, and get hypnotized. When it comes to 
 ## 2)Implemented Technologies:
 
 -Javascript Canvas
+
 -simplex-noise.js : https://www.npmjs.com/package/simplex-noise
 
 
@@ -74,8 +75,11 @@ Some code snippets:
 ## 5) Future Implementations and Extra Features:
 
 -Pause and screenshot features?
+
 -Additional modes and presets (Invert mode!)
+
 -More music options
+
 -Extra drawing/interactive features. Maybe a creative/freestyle mode?
 
 
