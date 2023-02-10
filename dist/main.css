@@ -186,6 +186,10 @@ audio {
   margin-right: 12px;
 }
 
-.hidden {
+#unmuteButton.hidden {
+  display: none;
+}
+
+#muteButton.hidden {
   display: none;
 }
