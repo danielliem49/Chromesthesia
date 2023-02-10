@@ -45,7 +45,7 @@ canvas.addEventListener("click", (event) => {
 
     setTimeout(()=> {
         title.classList = "hidden";
-    }, 3500)
+    }, 4000)
 
 
     if (game.running) {
