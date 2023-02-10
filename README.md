@@ -4,6 +4,8 @@
 ![](/assets/gif1.gif.sb-0ee26666-VEfZrA);
 
 
+Link to live: https://danielliem49.github.io/Chromesthesia/
+
 ## 1) Background:
 Chromesthesia is a graphics generator based on a Javascript implementation of 4D simplexnoise. An algorithm randomly generates particles on screen and blesses them with movement and color, allowing for a variety of cool patterns and textures.
 
@@ -20,7 +22,7 @@ Feel free to kick back with a beer, relax, and get hypnotized. When it comes to 
 
 -Click to start/stop
 
--Control rendering in the options tab in the bottom left. The alrogithm can be controlled in real-time, allowing for dynamic and customizable designs
+-Control rendering in the options tab in the bottom left. The options can be tinkered with in game, controlling the alrogithm in real-time.
 
 -Select between different reset timer options.
 
@@ -38,9 +40,20 @@ Feel free to kick back with a beer, relax, and get hypnotized. When it comes to 
 
 ## 4) Code Description:
 
-Particles are generated with random initial properties at game start. One game instance is initialized in index.js, and the game is started/stopped according to either user clicks or the reset function.
+One game instance is initialized in index.js, and the game is started/stopped according to either user clicks or the reset function.
 
-Once a game is started, the animation event loop starts, during which the particles are given pseudorandom movement by the simplexnoise based algorithm (in the form of angles). A particle's lifetime lasts until it hits one of the screen edges, upon which it's reset with new initial properties.
+![](/assets/codeSnippet1.png)
+
+When a game instance is started, particles are generated with random initial properties and the animation event loop starts, during which the particles are constantly given pseudorandom movement by the algorithm (in the form of angles) to new positions. 
+
+![](/assets/codeSnippet2.png)
+![](/assets/codeSnippet3.png)
+
+Meanwhile, the particle's color and transparency are constantly changing, through manipulation of the particles HSLA values.A particle's lifetime lasts until it hits one of the screen edges, upon which it resets with new initial properties. 
+
+![](/assets/codeSnippet4.png)
+![](/assets/codeSnippet5.png)
+![](/assets/codeSnippet6.png)
 
 
 ## 5) Future Implementations and Extra Features:

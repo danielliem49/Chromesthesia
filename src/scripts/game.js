@@ -95,7 +95,6 @@ class Game {
         for (let i = 0; i < octaves; ++i) {
             amp *= fallout;
             sum += amp * (this.noise4D(x * f, y * f, z * f, w * f));
-            // console.log(this.noise4D(x * f, y * f, z * f, w * f));
             f *= 2;
         }
         return sum;
@@ -156,13 +155,7 @@ class Game {
         this.addParticles();
         this.raf = requestAnimationFrame(this.update.bind(this));
 
-        // // reset if exists on init
-        // if (this.resetTimer) {
         this.reset();
-        // }
-
-        console.log("Game is Running!");
-
     }
 
     stop() {
@@ -185,19 +178,12 @@ class Game {
 
     reset() {
         if (this.awaitingRestart) clearTimeout(this.timerID);
-        console.log(this.resetTimer);
-
-        // if (!this.resetTimer) {
-        //     console.log("resetTimer is NanN")
-        // }
-
 
         if (this.resetTimer) {
             const resetAndStart = async () => {
                 
                 this.timerID = null;
                 this.awaitingRestart = true
-                console.log(`awaiting reset in ${this.resetTimer} ms`);
                 const resetTimeout = () => new Promise((resolve) => {
                     this.timerID = setTimeout(resolve, this.resetTimer);
                 });

@@ -16,22 +16,11 @@ ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 const toggleBtn = document.getElementById("toggleBtn");
 const controlContent = document.getElementById("control-content");
 
-let menuOpen = false;
 toggleBtn.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    // this.innerHTML = this.innerHTML === "Open Menu" ? "Close Menu" : "Open Menu";
     controlContent.style.display = controlContent.style.display === "none" ? "flex" : "none";
 })
-
-// // toggle menu with space
-// toggleBtn.addEventListener("keydown", (event) => {
-//     if (event.code === "Space") {
-//     event.preventDefault();
-//     event.stopPropagation();
-//     controlContent.style.display = controlContent.style.display === "none" ? "flex" : "none";
-//     }
-// })
 
 // initialize game and title screen, click to start/stop
 let game = new Game(canvas);
@@ -42,8 +31,10 @@ let name = document.getElementById("name");
 canvas.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+
     game.running = !game.running;
     game.music.play();
+    
     clicktostart.classList.toggle("no-animation");
     clicktostart.classList.toggle("hidden");
 
