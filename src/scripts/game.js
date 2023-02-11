@@ -60,7 +60,7 @@ class Game {
 
         // music
         this.music = document.createElement("audio");
-        this.music.src = "assets/shortened-relaxing-music-vol1_98Ht2y6J.mp3";
+        this.music.src = "assets/music1.mp3";
         this.music.volume = 0.1;
     }
     
