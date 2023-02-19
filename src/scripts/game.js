@@ -17,7 +17,7 @@ class Game {
         resetTimer: 300000,
         light: 0.5,
         hueVariation: 2,
-        step: 11,
+        step: 6,
         base: 300,
         xBias: 1, 
         yBias: 1 
