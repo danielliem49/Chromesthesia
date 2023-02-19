@@ -78,7 +78,7 @@ Some code snippets:
 
 -Additional modes and presets (Invert mode!)
 
--More music options
+-More music options, replay functionality fix
 
 -Extra drawing/interactive features. Maybe a creative/freestyle mode?
 
