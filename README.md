@@ -45,7 +45,7 @@ Feel free to kick back with a beer, relax, and get hypnotized. When it comes to 
 
 1) Color Variety controls the variety of color generating on the screen (setting to 0 will not prevent color change over time. For that option, set to Monochrome)
 
-2) Step Size is pretty much speed.  It controls the "jump" each particle makes between positions.
+2) Step Size is basically speed.  It controls the "jump" each particle makes between positions.
 
 3) Smoothness is what it sounds like.
 
@@ -58,9 +58,9 @@ Feel free to kick back with a beer, relax, and get hypnotized. When it comes to 
 
 One game instance is initialized in index.js, and the game is started/stopped according to either user clicks or the reset function.
 
-When a game instance is started, particles are generated with random initial properties and the animation event loop starts, during which the particles are constantly given pseudorandom movement by the algorithm (in the form of angles) to new positions. 
+When a game instance is started, particles are generated with random initial properties and the animation event loop starts, during which the particles are given pseudorandom movement by the algorithm.
 
-Meanwhile, the particle's color and transparency are constantly changing, through manipulation of the particles HSLA values.A particle's lifetime lasts until it hits one of the screen edges, upon which it resets with new initial properties. 
+Meanwhile, the particle's color and transparency are constantly changing, through manipulation of the particles HSLA values. A particle's lifetime lasts until it hits one of the screen edges, upon which it resets with new initial properties. 
 
 Some code snippets:
 ![](/assets/codeSnippet1.png)
