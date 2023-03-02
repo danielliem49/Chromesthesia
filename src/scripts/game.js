@@ -117,7 +117,7 @@ class Game {
             p.lastX = p.x;
             p.lastY = p.y;
             
-            let angle = Math.PI * 6 * this.getNoise((p.x / base) * this.xBias, (p.y / base) * this.yBias, this.zStart, this.wStart);
+            let angle = Math.PI * 6 * this.getNoise((p.x / base) * this.yBias, (p.y / base) * this.xBias, this.zStart, this.wStart);
             p.x += Math.cos(angle) * step;
             p.y += Math.sin(angle) * step;
 
