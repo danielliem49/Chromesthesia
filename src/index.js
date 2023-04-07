@@ -125,7 +125,6 @@ radio3.addEventListener("input", function () {
         game.hueVariation = 0;
         game.hueIncrement = 0;
         slider1.value = game.hueVariation;
-        slider1.readOnly = true;
     }
 });
 
