@@ -22,11 +22,12 @@ body {
 #controls {
   position: absolute;
   bottom: 0;
-  left: 2%;
+  left: 1%;
   width: 200px;
   z-index: 1;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #control-content {
@@ -47,7 +48,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #start-screen {
@@ -169,6 +170,7 @@ button {
   padding-left: 7px;
   padding-top: 2px;
   padding-bottom: 2px;
+  font-size: 16px;
 }
 
 input[type=radio] {
@@ -249,4 +251,19 @@ audio {
   width: 150px;
   height: auto;
   padding: 10px;
+}
+
+#reset-timer {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.sliders input {
+  margin-bottom: 5px;
 }

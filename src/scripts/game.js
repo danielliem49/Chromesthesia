@@ -18,7 +18,7 @@ class Game {
         light: 0.5,
         hueVariation: 2,
         step: 6,
-        base: 300,
+        base: 200,
         xBias: 1, 
         yBias: 1 
     };

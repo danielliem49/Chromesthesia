@@ -63,7 +63,7 @@
                 </a>
             </div>
 
-            <label for="reset-timer">Reset Timer:</label>
+            <label for="reset-timer" style="font-size: 16px; margin-bottom: 3px;">Reset Timer:</label>
             <select id="reset-timer">
                 <option value="30000">30 Seconds</option>
                 <option value="60000">1 Minute</option>
@@ -73,6 +73,7 @@
                 <option value="100000000">Never</option>
             </select>
 
+            <label style="font-size: 16px; margin-bottom: 3px;">Special Effects:</label>
             <div class="radio-container">
                 <input type="radio" class="radio" name='radio-effects' id="shadowblack">
                 <label for="shadowblack">Black Ink</label>
@@ -88,25 +89,28 @@
                 <label for="monochrome">Monochrome</label>
             </div>
 
-            <div class="radio-container">
+            <div class="radio-container" style="margin-bottom: 20px;">
                 <input type="radio" class="radio" name='radio-effects' id="noSpecialEffects">
                 <label for="noSpecialEffects">None</label>
             </div>
 
-            <label for="colorVariety">Color Variety</label>
-            <input type="range" min="0" max="4" step="0.2" class="slider" id="colorVariety">
+            <div class="sliders">
+                <label for="colorVariety">Color Variety</label>
+                <input type="range" min="0" max="4" step="0.2" class="slider" id="colorVariety">
 
-            <label for="particleStep">Step Size</label>
-            <input type="range" min="1" max="11" step="1" class="slider" id="particleStep">
+                <label for="particleStep">Step Size</label>
+                <input type="range" min="1" max="11" step="1" class="slider" id="particleStep">
 
-            <label for="particleBase">Smoothness</label>
-            <input type="range" min="100" max="500" step="20" class="slider" id="particleBase">
+                <label for="particleBase">Smoothness</label>
+                <input type="range" min="100" max="500" step="20" class="slider" id="particleBase">
 
-            <label for="xBias">X-Bias</label>
-            <input type="range" min="0" max="2" step="0.1" class="slider" id="xBias">
+                <label for="xBias">X-Bias</label>
+                <input type="range" min="0" max="2" step="0.1" class="slider" id="xBias">
 
-            <label for="yBias">Y-Bias</label>
-            <input type="range" min="0" max="2" step="0.1" class="slider" id="yBias">
+                <label for="yBias">Y-Bias</label>
+                <input type="range" min="0" max="2" step="0.1" class="slider" id="yBias" style="margin-bottom: 30px;">
+            </div>
+
         </div>
         <button id="toggleBtn">Options</button>
     </div>
