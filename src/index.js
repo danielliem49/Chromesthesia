@@ -37,11 +37,12 @@ canvas.addEventListener("click", (event) => {
     
     clicktostart.classList.toggle("no-animation");
     clicktostart.classList.toggle("hidden");
+    name.classList.toggle("hidden");
 
     
-    setTimeout(() => {
-        name.classList = "hidden";
-    }, 200)
+    // setTimeout(() => {
+    //     name.classList = "hidden";
+    // }, 200)
 
     setTimeout(()=> {
         title.classList = "hidden";
@@ -57,9 +58,10 @@ canvas.addEventListener("click", (event) => {
 
 //sliders and control
 let dropdown1 = document.getElementById("reset-timer");
-let checkbox1 = document.getElementById("shadowblack");
-let checkbox2 = document.getElementById("whitesmoke");
-let checkbox3 = document.getElementById("monochrome");
+let radio1 = document.getElementById("shadowblack");
+let radio2 = document.getElementById("whitesmoke");
+let radio3 = document.getElementById("monochrome");
+let radio4 = document.getElementById("noSpecialEffects");
 let slider1 = document.getElementById("colorVariety");
 let slider2 = document.getElementById("particleStep");
 let slider3 = document.getElementById("particleBase");
@@ -68,9 +70,10 @@ let slider5 = document.getElementById("yBias");
 
 // set control defaults
 dropdown1.value = game.resetTimer;
-checkbox1.checked = game.shadowblack;
-checkbox2.checked = game.whitesmoke;
-checkbox3.checked = game.monochrome;
+radio1.checked = game.shadowblack;
+radio2.checked = game.whitesmoke;
+radio3.checked = game.monochrome;
+radio4.checked = game.noSpecialEffects;
 slider1.value = game.hueVariation;
 slider2.value = game.step;
 slider3.value = game.base;
@@ -87,40 +90,52 @@ dropdown1.addEventListener("input", function () {
     }
 });
 
-checkbox1.addEventListener("input", function () {
-    game.shadowblack = !game.shadowblack;
+radio1.addEventListener("input", function () {
+    game.shadowblack = true;
+    game.whitesmoke = false;
+    game.monochrome = false;
+    game.noSpecialEffects = false;
     if (game.shadowblack) {
-        if (game.whitesmoke) {
-            game.whitesmoke = false;
-            checkbox2.checked = game.whitesmoke;
-        }
         game.light = 0;
-    } else {
-        game.light = 0.5;
+        game.hueVariation = slider1.value;
+        game.hueIncrement = 0.2;
     }
 });
 
 
-checkbox2.addEventListener("input", function () {
-    game.whitesmoke = !game.whitesmoke;
+radio2.addEventListener("input", function () {
+    game.shadowblack = false;
+    game.whitesmoke = true;
+    game.monochrome = false;
+    game.noSpecialEffects = false;
     if (game.whitesmoke) {
-        if (game.shadowblack) {
-            game.shadowblack = false;
-            checkbox3.checked = game.shadowblack;
-        }
         game.light = 1;
-    } else {
-        game.light = 0.5;
+        game.hueVariation = slider1.value;
+        game.hueIncrement = 0.2;
     }
 });
 
-checkbox3.addEventListener("input", function () {
-    game.monochrome = !game.monochrome;
+radio3.addEventListener("input", function () {
+    game.shadowblack = false;
+    game.whitesmoke = false;
+    game.monochrome = true;
+    game.noSpecialEffects = false;
     if (game.monochrome) {
+        game.light = 0.5;
         game.hueVariation = 0;
         game.hueIncrement = 0;
-        slider1.value = game.hueIncrement
-    } else {
+        slider1.value = game.hueVariation;
+        // slider1.readOnly = true;
+    }
+});
+
+radio4.addEventListener("input", function () {
+    game.shadowblack = false;
+    game.whitesmoke = false;
+    game.monochrome = false;
+    game.noSpecialEffects = true;
+    if (game.noSpecialEffects) {
+        game.light = 0.5;
         game.hueVariation = slider1.value;
         game.hueIncrement = 0.2;
     }

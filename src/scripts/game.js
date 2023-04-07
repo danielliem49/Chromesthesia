@@ -18,7 +18,7 @@ class Game {
         light: 0.5,
         hueVariation: 2,
         step: 6,
-        base: 300,
+        base: 200,
         xBias: 1, 
         yBias: 1 
     };
@@ -47,6 +47,7 @@ class Game {
         this.monochrome = false;
         this.whitesmoke = false;
         this.shadowblack = false;
+        this.noSpecialEffects = true;
         this.light = Game.DEFAULTS.light;
         this.hueVariation = Game.DEFAULTS.hueVariation;
         this.step = Game.DEFAULTS.step;
