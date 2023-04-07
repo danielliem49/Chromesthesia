@@ -47,6 +47,7 @@ class Game {
         this.monochrome = false;
         this.whitesmoke = false;
         this.shadowblack = false;
+        this.noSpecialEffects = true;
         this.light = Game.DEFAULTS.light;
         this.hueVariation = Game.DEFAULTS.hueVariation;
         this.step = Game.DEFAULTS.step;
