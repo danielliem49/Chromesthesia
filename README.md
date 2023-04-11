@@ -15,9 +15,9 @@ Link to live: https://danielliem49.github.io/Chromesthesia/
 
 Now enjoy life in color!
 
-Chromesthesia is a graphics generator based on a Javascript implementation of 4D simplexnoise. An algorithm randomly generates particles on screen and blesses them with movement and color, allowing for a variety of cool patterns and textures.
+Chromesthesia is an abstract graphics generator based on a Javascript implementation of 4D simplexnoise. Particles are generated on screen and are given movement and color calculated from a noise algortihm, allowing for a variety of cool patterns and textures.
 
-Feel free to kick back with a beer, relax, and get hypnotized. When it comes to using this app, there are no rules!
+Feel free to kick back with a beer, relax, and get hypnotized. Or play around with the control panel and make some funky art of your own. When it comes to using this app, there are no rules!
 
 
 
@@ -45,9 +45,9 @@ Feel free to kick back with a beer, relax, and get hypnotized. When it comes to 
 
 1) Color Variety controls the variety of color generating on the screen (setting to 0 will not prevent color change over time. For that option, set to Monochrome)
 
-2) Step Size is basically speed.  It controls the "jump" each particle makes between positions.
+2) Step Size is analogous to particle speed.  It controls the "jump" each particle makes between positions.
 
-3) Smoothness is what it sounds like.
+3) Smoothness is what it sounds like. High smoothness looks like waves of beautiful silk sheets, and low smoothness looks like a bad skincare routine.
 
 4) X and Y bias set the particles to prefer either horizontal or vertical movement.
 
