@@ -94,6 +94,10 @@ body {
     letter-spacing: 0.7px;
 }
 
+h4:hover {
+    cursor: none;
+}
+
 @keyframes fadeInOut {
     0% {
         opacity: 0;
