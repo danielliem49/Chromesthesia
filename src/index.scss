@@ -95,7 +95,19 @@ body {
 }
 
 h4:hover {
-    cursor: none;
+    cursor: default;
+}
+
+#clicktostart:hover {
+    cursor: default;
+}
+
+h1:hover {
+    cursor: default;
+}
+
+#title:hover {
+    cursor: default;
 }
 
 @keyframes fadeInOut {
@@ -166,6 +178,10 @@ button {
     height: 2rem;
     background-color: black;
     opacity: 1;
+}
+
+button:hover {
+    cursor: pointer;
 }
 
 .radio-container {
